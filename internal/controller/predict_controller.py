@@ -1,6 +1,5 @@
 from flask_restplus import Resource
 from flask import request, jsonify
-from flask_cors import cross_origin
 import logging
 from internal.dto.dto import *
 from internal.controller.api import api
@@ -22,5 +21,4 @@ class Predict(Resource):
 
     def get(self):
             response = jsonify({'some': 'data'})
-            response.headers.add('Access-Control-Allow-Origin', '*')
             return response
