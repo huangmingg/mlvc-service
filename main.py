@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-CORS(app, resources={r"/v1/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 api.init_app(blueprint)
 api.add_namespace(predict_ns)
