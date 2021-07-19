@@ -9,9 +9,7 @@ logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 
-app.config['CORS_HEADERS'] = 'Content-Type'
-
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 
 api.init_app(blueprint)
 api.add_namespace(predict_ns)
