@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 ns = api.namespace('predict', description='Operations related to prediction.')
 
 @ns.route('/')
-@cross_origin()
 class Predict(Resource):
     @ns.expect(company_create)
     @api.marshal_with(company_create)
