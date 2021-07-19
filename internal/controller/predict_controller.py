@@ -1,5 +1,5 @@
 from flask_restplus import Resource
-from flask import request
+from flask import request, jsonify
 from flask_cors import cross_origin
 import logging
 from internal.dto.dto import *
@@ -22,4 +22,6 @@ class Predict(Resource):
             return {'name': f"Group {body['name']} successfully created"}
 
     def get(self):
-        return "test works"
+            response = jsonify({'some': 'data'})
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
