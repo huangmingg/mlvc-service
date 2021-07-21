@@ -1,6 +1,5 @@
 from xgboost import XGBClassifier
 import os
-import shap
 import logging
 
 logger = logging.getLogger(__name__)
