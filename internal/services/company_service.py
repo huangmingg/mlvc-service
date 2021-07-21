@@ -4,10 +4,12 @@ from client.aws import run_prediction
 import pandas as pd
 import os
 
+DATA_DIRECTORY = os.path.join(os.getcwd(), "data")
+
 class CompanyService:
     @staticmethod
     def get_company_by_id(id):
-        df = pd.read_csv(os.path.join('data', 'companies.csv'))
+        df = pd.read_csv(os.path.join(DATA_DIRECTORY, 'companies.csv'))
         if id not in df.index:
             raise Exception(InvalidIndexError)
         company = df.iloc[id].to_dict()
@@ -15,7 +17,7 @@ class CompanyService:
 
     @staticmethod
     def get_companies(order_by: str, ascending: bool, page: int, row_count: int):
-        df = pd.read_csv(os.path.join('data', 'companies.csv'))
+        df = pd.read_csv(os.path.join(DATA_DIRECTORY, 'companies.csv'))
         if order_by not in df.columns:
             order_by = 'location'
         df.sort_values(order_by, ascending=ascending, inplace=True)
