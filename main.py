@@ -4,6 +4,7 @@ from internal.controller.api import api
 from internal.controller.blueprint import blueprint
 import logging
 from internal.controller.predict_controller import ns as predict_ns
+from internal.controller.company_controller import ns as company_ns
 
 logging.basicConfig(level=logging.INFO)
 
@@ -13,6 +14,7 @@ CORS(app)
 
 api.init_app(blueprint)
 api.add_namespace(predict_ns)
+api.add_namespace(company_ns)
 
 app.register_blueprint(blueprint)
 
