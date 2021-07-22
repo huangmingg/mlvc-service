@@ -16,11 +16,19 @@ class CompanyService:
         return company
 
     @staticmethod
-    def get_companies(order_by: str, ascending: bool, page: int, row_count: int):
+    def get_all_companies():
+        df = pd.read_csv(os.path.join(DATA_DIRECTORY, 'companies.csv'))
+        companies = df.to_dict('records')
+        return companies
+
+    @staticmethod
+    def get_companies(order_by, is_descending, page, row_count):
+        descending = True if is_descending == 'true' else False
         df = pd.read_csv(os.path.join(DATA_DIRECTORY, 'companies.csv'))
         if order_by not in df.columns:
             order_by = 'location'
-        df.sort_values(order_by, ascending=ascending, inplace=True)
+        df.sort_values(order_by, ascending=descending, inplace=True)
+        df.reset_index(inplace=True, drop=True)
         offset = (int(page) - 1) * int(row_count)
-        companies = df.iloc[offset : offset + int(row_count)].to_dict('records')
-        return companies
+        companies = df.iloc[offset : offset + int(row_count)]
+        return companies.to_dict('records')
