@@ -23,11 +23,11 @@ class CompanyService:
 
     @staticmethod
     def get_companies(order_by, is_descending, page, row_count):
-        descending = True if is_descending == 'true' else False
+        ascending = True if is_descending == 'false' else False
         df = pd.read_csv(os.path.join(DATA_DIRECTORY, 'companies.csv'))
         if order_by not in df.columns:
             order_by = 'location'
-        df.sort_values(order_by, ascending=descending, inplace=True)
+        df.sort_values(order_by, ascending=ascending, inplace=True)
         df.reset_index(inplace=True, drop=True)
         offset = (int(page) - 1) * int(row_count)
         companies = df.iloc[offset : offset + int(row_count)]
