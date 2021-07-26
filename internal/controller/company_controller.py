@@ -1,7 +1,7 @@
 from flask_restplus import Resource
-from flask import request, jsonify
+from flask import request
 import logging
-from internal.dto.dto import *
+from internal.dto.dto import company_read
 from internal.controller.api import api
 from internal.services.company_service import CompanyService
 

@@ -5,7 +5,15 @@ prediction_create = api.model('prediction_create', {
     'name': fields.String(required=True)
 })
 
+prediction_return = api.model('prediction_return', {
+    'company_id': fields.String(required=True),
+    'success': fields.Boolean(required=True),
+    'name': fields.String(required=True),
+})
+
 company_read = api.model('company_read', {
+    'id': fields.String(required=True),
+    'name': fields.String(),
     'location': fields.String(),
     'employee': fields.String(),
     'industries': fields.String(),
