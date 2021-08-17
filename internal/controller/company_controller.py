@@ -19,7 +19,6 @@ parser.add_argument('is_descending', type=bool, help='Is descending order', loca
 class Company(Resource):
     @api.marshal_with(company_read)
     def get(self, id):
-        print(id)
         data = CompanyService.get_company_by_id(id)
         return data
 
